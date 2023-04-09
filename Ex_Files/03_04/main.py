@@ -13,8 +13,8 @@ EINSTEIN = {
 
 einstein_json = json.dumps(EINSTEIN)
 back_to_dict = json.loads(einstein_json)
-print(einstein_json)
-pprint(back_to_dict)
+# print(einstein_json)
+# pprint(back_to_dict)
 
 with open("laureates.csv", "r") as f:
     reader = csv.DictReader(f)
@@ -28,7 +28,14 @@ with open("laureates.csv", "r") as f:
 
 laureates_beginning_with_a = []
 # LinkedIn learner code here
+print(f"Number of laurates : {len(laureates)}")
+for laureate in laureates:
+    if laureate["name"][0].lower() == 'a':
+        print(f"Appending to the list {laureate['name']}")
+        laureates_beginning_with_a.append(laureate)
 
+print(
+    f"Number of laureates_beginning_with_a : {len(laureates_beginning_with_a)}")
 
 with open("laureates.json", "w") as f:
     json.dump(laureates_beginning_with_a, f, indent=2)
